@@ -55,6 +55,7 @@ const LandingPage = () => {
 
             {/* 3. What We Offer Section: Two Cards with Hover Animation */}
           <section className="offer-section">
+              <br><br><br>
                 <h2 className="offer-title">WHAT WE OFFER</h2>
                 <div className="offer-cards-container">
                     
