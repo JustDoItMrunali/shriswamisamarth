@@ -11,13 +11,6 @@ const containerStyle = {
     minHeight: '60vh',
 };
 
-const titleStyle = {
-    fontSize: '3em',
-    color: 'var(--primary-light)',
-    marginBottom: '20px',
-    fontFamily: 'Great Vibes, cursive',
-    textShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)',
-};
 
 const textStyle = {
     fontSize: '1.1em',

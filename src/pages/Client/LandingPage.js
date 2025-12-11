@@ -55,7 +55,6 @@ const LandingPage = () => {
 
             {/* 3. What We Offer Section: Two Cards with Hover Animation */}
           <section className="offer-section">
-              <br><br><br>
                 <h2 className="offer-title">WHAT WE OFFER</h2>
                 <div className="offer-cards-container">
                     
@@ -79,7 +78,7 @@ const LandingPage = () => {
                 
                 {/* Heading and Contact Info container (styled to be above the map) */}
                 <div className="contact-details-container"> 
-                    <h3 className="section-subtitle">Our Location</h3>
+                    <h3 className="section-subtitle">OUR LOCATION </h3>
                 </div>
                 
                 {/* Map Placeholder */}
