@@ -54,7 +54,7 @@ const Header = ({ theme, toggleTheme, user, openContactModal }) => {
         }}
         onClick={closeMobileMenu}
       >
-        Sri Swami Samarth
+        Shree Swami Samarth
       </Link>
 
       {/* 2. Hamburger Icon (Visible on Mobile Only) */}
