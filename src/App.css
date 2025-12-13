@@ -1,59 +1,63 @@
-/* --- Global Reset for Stable Layout (MUST BE AT THE TOP) --- */
+/* --- 1. GLOBAL RESET AND THEME VARIABLES --- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* --- Root Variables for Theming --- */
 :root {
+  /* Default (Light) Theme Colors */
   --background-light: #ffffff;
   --text-light: #333333;
-  --primary-light: #c262a5; /* PRESERVED: Custom Primary Light Color */
+  --primary-light: #c262a5; /* Primary Accent Color (e.g., logo, link hover) */
+  --secondary-color: #8f1d6fff; /* Dark Plum/Magenta for buttons/accents */
   --shadow-light: rgba(0, 0, 0, 0.1);
-  --hero-bg-color: #f5f5f5; 
+  --hero-bg-color: #f5f5f5; /* Light gray background for hero */
 }
 
 .dark-theme {
+  /* Dark Theme Overrides */
   --background-light: #121212;
   --text-light: #f1f1f1;
-  --primary-light: #d181d5; /* PRESERVED: Custom Primary Dark Color */
+  --primary-light: #d181d5; 
+  --secondary-color: #a63a8d; /* Adjusted darker button color */
   --shadow-light: rgba(255, 255, 255, 0.15);
   --hero-bg-color: #1e1e1e;
 }
 
-/* --- General Styles --- */
+/* --- 2. GENERAL STYLES AND FONT APPLICATION --- */
 body {
   margin: 0;
-  /* PRESERVED: Courgette font for general text */
+  /* Courgette font for general text */
   font-family: 'Courgette', cursive; 
   background-color: var(--background-light);
   color: var(--text-light);
   transition: background-color 0.5s, color 0.5s;
-  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  overflow-x: hidden; 
 }
 
 .App {
     min-height: 100vh;
 }
 
-/* --- FONT APPLICATION: Logo Great Vibes Vibe --- */
+/* FONT: Logo Great Vibes Vibe */
 .logomain {
-    /* PRESERVED: Great Vibes font */
-    font-family: 'Great Vibes', cursive; 
+    /* Pacifico is a stand-in for Great Vibes if not loaded */
+    font-family: 'Great Vibes', 'Pacifico', cursive; 
     font-size: 2em; 
     font-weight: 700;
     font-style: normal; 
-    /* Underline offset is applied via inline style in Header.js */
+    /* Color is usually defined on the parent element */
 }
 
-
-/* --- HERO WRAPPER (Container for the full background visual) --- */
+/* --- 3. HERO WRAPPER (Full-Screen Background) --- */
 .hero-wrapper {
   position: relative;
-  min-height: 500px; 
-  padding-top: 70px; 
+  /* FIX 1: Use 100vh to ensure the background covers the full screen height */
+  min-height: 100vh; 
+  padding-top: 70px; /* Space for the fixed header */
   background-color: var(--hero-bg-color); 
+  /* FIX 2: 'cover' ensures the image fully fills the container without repeating */
   background-size: cover; 
   background-position: center top;
   background-repeat: no-repeat;
@@ -62,25 +66,19 @@ body {
   box-shadow: 0 5px 15px var(--shadow-light);
 }
 
-
-/* --- Header & Navigation (Transparent Overlay - Desktop) --- */
+/* --- 4. HEADER/NAVIGATION (Desktop) --- */
 .header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 50px;
   background-color: transparent; 
-  position: absolute; /* Default to absolute for desktop overlay look */
+  position: absolute; 
   top: 0;
   left: 0;
   right: 0;
   z-index: 10; 
   box-shadow: none; 
-}
-
-/* Ensure Logo and Slogan are handled correctly */
-.logo {
-  flex-shrink: 0;
 }
 
 .header-slogan {
@@ -109,7 +107,6 @@ body {
   cursor: pointer;
 }
 
-/* ANIMATION: Shadow on Text Hover */
 .nav-links a:hover {
   color: var(--primary-light);
   text-shadow: 0 0 8px var(--primary-light); 
@@ -124,20 +121,23 @@ body {
   transition: color 0.3s;
 }
 
-/* --- Dropdown Specific Styles --- */
+/* Dropdown Specific Styles */
 .dropdown-container {
     position: relative;
     display: inline-block;
 }
-/* ... (Dropdown Menu/Item styles are included in the mobile section where they are primarily needed) ... */
 
-/* --- Hero Section (Content Placement) --- */
+/* --- 5. HERO SECTION CONTENT (Desktop) --- */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 50px 80px; 
+  /* FIX 3: Ensure content fills the 100vh area below the header */
+  height: calc(100vh - 70px); 
+  padding: 0 50px 80px; /* Reduced top padding, kept side padding */
   background-color: transparent; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tagline-container {
@@ -160,17 +160,17 @@ body {
   border-radius: 10px;
 }
 
-/* --- What We Offer Section --- */
+/* --- 6. WHAT WE OFFER SECTION --- */
 .offer-section {
-  padding: 50px 50px 80px;
+  padding: 120px 50px 80px;
   text-align: center;
-  background-color: #ffeafd; /* PRESERVED: Custom background color */
+  background-color: #ffeafd; 
 }
 
 .offer-title {
   font-size: 2em;
   margin-bottom: 40px;
-  color: #b81e8a; /* PRESERVED: Custom offer title color */
+  color: #b81e8a; 
 }
 
 .offer-cards-container {
@@ -179,7 +179,7 @@ body {
   gap: 40px;
 }
 
-/* ANIMATION: Card Hover Effect */
+/* Card Hover Effect */
 .offer-card {
   width: 300px;
   padding: 20px;
@@ -208,10 +208,10 @@ body {
   color: var(--text-light);
 }
 
-/* --- Footer/Contact Section --- */
+/* --- 7. FOOTER/CONTACT SECTION --- */
 .contact-section {
-  padding: 30px;
-  background-color: #ffeafd; /* PRESERVED: Custom background color */
+  padding: 80px 30px 30px; /* Increased top padding for separation */
+  background-color: #ffeafd; 
   text-align: center;
 }
 
@@ -229,9 +229,9 @@ body {
 
 .map-placeholder {
   width: 100%;
-  max-width: 1000px; /* Adjusted to 1000px for consistency */
+  max-width: 1000px; 
   margin: 0 auto;
-  height: 450px; /* Fixed height for the map */
+  height: 450px; 
 }
 
 .map-placeholder iframe {
@@ -246,9 +246,34 @@ body {
   font-weight: 500;
 }
 
-/* --- Mobile Navigation and Responsiveness --- */
+/* --- 8. ANIMATIONS (Fade In/Up) --- */
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-/* 1. Hide Hamburger Menu on Desktop */
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes simpleFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.animated-element {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animated-element.fade-up.is-visible { animation: slideUp 0.6s forwards; }
+.animated-element.fade-in.is-visible { animation: simpleFadeIn 0.6s forwards; }
+.animated-element.fade-right.is-visible { animation: slideRight 0.8s forwards; }
+
+
+/* --- 9. MOBILE RESPONSIVENESS (Max Width 900px) --- */
+
 .hamburger-menu {
     display: none;
     background: none;
@@ -260,35 +285,20 @@ body {
     padding: 0;
 }
 
-/* 2. Mobile Media Query (Applies to screen width 900px and smaller) */
 @media (max-width: 900px) {
     
+    /* Header Fixes for Mobile */
     .header-container {
         padding: 15px 20px;
-        justify-content: space-between; 
-        /* Ensure the header is fixed and solid background on mobile */
         background-color: var(--background-light); 
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
+        position: fixed; /* Ensures header stays on top */
         box-shadow: 0 2px 5px var(--shadow-light);
     }
     
-    .logo, .hamburger-menu {
-        color: var(--text-light); 
-    }
+    .header-slogan { display: none; }
+    .hamburger-menu { display: block; }
 
-    .header-slogan {
-        display: none;
-    }
-
-    /* Show the Hamburger Menu */
-    .hamburger-menu {
-        display: block;
-    }
-
-    /* Style the sliding mobile menu container */
+    /* Mobile Menu Slide-out */
     .nav-links {
         display: none;
         flex-direction: column;
@@ -303,16 +313,13 @@ body {
         transition: transform 0.3s ease-in-out;
         transform: translateX(100%); 
         z-index: 90;
-        overflow-y: auto; 
     }
 
-    /* When 'open' class is applied, slide the menu into view */
     .nav-links.open {
         display: flex;
         transform: translateX(0);
     }
     
-    /* Style individual links for the vertical menu */
     .nav-links a,
     .nav-links button,
     .dropdown-container {
@@ -322,106 +329,55 @@ body {
         padding: 10px 0;
         border-bottom: 1px solid var(--shadow-light); 
     }
-
-    .dropdown-container {
-        margin-left: 0; 
-        position: static; 
-    }
     
-    .dropdown-menu {
-        position: relative;
-        box-shadow: none;
-        border: none;
-        padding: 5px 0;
-        background-color: transparent;
-        width: 100%;
-        transform: none;
-    }
+    .dropdown-container { margin-left: 0; position: static; }
+    .theme-toggle { order: 10; margin-left: 0; padding-top: 20px; font-size: 2em; }
 
-    .dropdown-item {
-        padding-left: 20px; 
-    }
-    
-    .theme-toggle {
-        order: 10; 
-        margin-left: 0;
-        padding-top: 20px;
-        font-size: 2em;
-    }
-
-    /* Adjust main content padding when header is fixed */
+    /* Hero Section Stacking (Fixes alignment issue from screenshot) */
     .hero-wrapper {
-        padding-top: 80px; /* Push content below the fixed header */
-        min-height: 400px;
+        padding-top: 80px; 
+        min-height: auto; /* Allow height to adjust */
+        padding-bottom: 40px;
     }
     
-    /* Adjust Hero Section layout for mobile stacking */
     .hero-section {
-        flex-direction: column;
+        flex-direction: column; /* Stack vertically */
         text-align: center;
         padding: 40px 20px;
+        height: auto;
     }
 
     .tagline-container {
         padding-right: 0;
         margin-bottom: 30px;
+        order: 1; /* Keep text on top */
     }
     
-    .hero-image-content {
-        max-width: 100%;
+    .tagline {
+        font-size: 2em;
     }
 
+    .hero-image-content {
+        order: 2; /* Move image below text */
+        width: 100%; 
+        max-width: 300px; /* Ensures image doesn't get too wide */
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    
+    /* Offer Section Stacking */
     .offer-cards-container {
         flex-direction: column;
         align-items: center;
+        gap: 20px;
     }
-}
-/* --- src/App.css (Ensure this block is present) --- */
-.logomain {
-    /* Apply the Great Vibes font */
-    font-family: 'Pacifico', cursive; 
     
-    /* Ensure bold and size for the new class */
-    font-size: 2em; /* This is overridden by the inline 30px, but kept for consistency */
-    font-weight: 700; 
-    font-style: normal; 
+    .offer-card {
+        width: 90%; 
+    }
     
-    /* Underline offset, etc. */
-}
-/* --- HERO WRAPPER (Container for the full background visual) --- */
-.hero-wrapper {
-  position: relative;
-  /* CHANGE 1: Set height to full viewport height (100vh) */
-  min-height: 100vh; 
-  
-  /* ADJUSTMENT: Compensate for fixed header height (if necessary), 
-     but 100vh is usually the best starting point for a full-screen hero. 
-     We'll adjust padding-top to ensure content is below the header. */
-  padding-top: 70px; 
-  
-  background-color: var(--hero-bg-color); 
-  
-  /* CHANGE 2: Use 'cover' to ensure the image fills the area, potentially cropping edges */
-  background-size: cover; 
-  background-position: center top;
-  background-repeat: no-repeat;
-  
-  /* Optional: Soft curve and shadow to make the top section stand out */
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: 0 5px 15px var(--shadow-light);
-}
-
-/* --- Hero Section (Content Placement) --- */
-.hero-section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* Remove top/bottom padding here since 100vh is set on the wrapper. 
-     We will rely on flexbox alignment for centering. */
-  padding: 50px 50px; 
-  background-color: transparent; 
-  
-  /* Ensure hero content fills the space remaining after padding-top */
-  height: calc(100vh - 70px); 
+    /* General Mobile Padding */
+    .offer-section, .contact-section {
+        padding: 60px 20px;
+    }
 }
